@@ -398,7 +398,7 @@ export const GameHost = () => {
       duration: 3000
     });
     if (window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance("Welcome to Smart Tambola! Let's begin the round. Good luck everyone!");
+      const utterance = new SpeechSynthesisUtterance("Welcome to Royal Tambola! Let's begin the round. Good luck everyone!");
       utterance.rate = 0.8;
       utterance.pitch = 1.2;
       window.speechSynthesis.speak(utterance);
@@ -420,7 +420,7 @@ export const GameHost = () => {
             <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
               <Users className="w-8 h-8 text-black" />
             </div>
-            <h2 className="text-3xl font-bold text-black mb-4 text-stroke">Smart Tambola Ready</h2>
+            <h2 className="text-3xl font-bold text-black mb-4 text-stroke font-casino">Royal Tambola Ready</h2>
             <p className="text-black/80 mb-8 font-semibold">Generate tickets and get ready to play!</p>
             
             <div className="space-y-4">
@@ -447,7 +447,7 @@ export const GameHost = () => {
             <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
               <Users className="w-8 h-8 text-black" />
             </div>
-            <h2 className="text-3xl font-bold text-black mb-4">Smart Tambola</h2>
+            <h2 className="text-3xl font-bold text-black mb-4 font-casino">Royal Tambola</h2>
             <p className="text-black/80 mb-8 font-semibold">How many players will join the game?</p>
             
             <div className="space-y-6">
