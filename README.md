@@ -15,7 +15,7 @@ A premium, multiplayer Tambola game with a luxurious casino aesthetic—dark gre
 - Live ticket assignment and number calling  
 - Interactive click-to-mark interface  
 - Pattern claims: Early Five, Top/Middle/Bottom Line, Four Corners, Full House  
-- Real-time scoring and leaderboard  
+- Real-time points system and leaderboard  
 - Casino-inspired UI: green felt background, wooden rails, gold highlights  
 
 ## What technologies are used for this project?
