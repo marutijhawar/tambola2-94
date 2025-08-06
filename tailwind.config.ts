@@ -61,6 +61,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				casino: {
+					felt: 'hsl(var(--casino-felt))',
+					wood: 'hsl(var(--casino-wood))',
+					gold: 'hsl(var(--casino-gold))',
+					'gold-dark': 'hsl(var(--casino-gold-dark))',
+					green: 'hsl(var(--casino-green))',
+					rim: 'hsl(var(--casino-rim))'
+				},
 				tambola: {
 					orange: 'hsl(var(--tambola-orange))',
 					purple: 'hsl(var(--tambola-purple))',
@@ -83,12 +91,17 @@ export default {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-secondary': 'var(--gradient-secondary)',
 				'gradient-accent': 'var(--gradient-accent)',
-				'gradient-bg': 'var(--gradient-bg)'
+				'gradient-bg': 'var(--gradient-bg)',
+				'gradient-felt': 'var(--gradient-felt)',
+				'gradient-wood': 'var(--gradient-wood)'
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
 				'card': 'var(--shadow-card)',
-				'float': 'var(--shadow-float)'
+				'float': 'var(--shadow-float)',
+				'felt': 'var(--shadow-felt)',
+				'wood': 'var(--shadow-wood)',
+				'gold': 'var(--shadow-gold)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',
@@ -160,6 +173,43 @@ export default {
 					'100%': {
 						transform: 'scale(1)'
 					}
+				},
+				'gold-shimmer': {
+					'0%': {
+						backgroundPosition: '-100% 0'
+					},
+					'100%': {
+						backgroundPosition: '200% 0'
+					}
+				},
+				'chip-shuffle': {
+					'0%, 100%': {
+						transform: 'translateX(0) rotate(0deg)'
+					},
+					'25%': {
+						transform: 'translateX(2px) rotate(1deg)'
+					},
+					'75%': {
+						transform: 'translateX(-2px) rotate(-1deg)'
+					}
+				},
+				'banner-slide': {
+					'0%': {
+						transform: 'translateY(-100%) scale(0.8)',
+						opacity: '0'
+					},
+					'20%': {
+						transform: 'translateY(0) scale(1.05)',
+						opacity: '1'
+					},
+					'80%': {
+						transform: 'translateY(0) scale(1)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateY(-100%) scale(0.8)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
@@ -168,7 +218,10 @@ export default {
 				'bounce-in': 'bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
 				'slide-up': 'slide-up 0.4s ease-out',
-				'number-pop': 'number-pop 0.3s ease-out'
+				'number-pop': 'number-pop 0.3s ease-out',
+				'gold-shimmer': 'gold-shimmer 2s linear infinite',
+				'chip-shuffle': 'chip-shuffle 3s ease-in-out infinite',
+				'banner-slide': 'banner-slide 4s ease-in-out'
 			}
 		}
 	},

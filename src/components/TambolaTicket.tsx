@@ -105,52 +105,64 @@ export const TambolaTicket = ({
 
   const getCellColor = (colIndex: number) => {
     const colors = [
-      'bg-tambola-orange/10 border-tambola-orange',
-      'bg-tambola-purple/10 border-tambola-purple', 
-      'bg-tambola-blue/10 border-tambola-blue',
-      'bg-tambola-green/10 border-tambola-green',
-      'bg-tambola-pink/10 border-tambola-pink',
-      'bg-primary/10 border-primary',
-      'bg-secondary/10 border-secondary',
-      'bg-accent/10 border-accent',
-      'bg-warning/10 border-warning'
+      'bg-casino-gold/10 border-casino-gold/50 hover:bg-casino-gold/20',
+      'bg-casino-gold/12 border-casino-gold/50 hover:bg-casino-gold/20', 
+      'bg-casino-gold/14 border-casino-gold/50 hover:bg-casino-gold/20',
+      'bg-casino-gold/16 border-casino-gold/50 hover:bg-casino-gold/20',
+      'bg-casino-gold/18 border-casino-gold/50 hover:bg-casino-gold/20',
+      'bg-casino-gold/20 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/22 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/24 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/26 border-casino-gold/50 hover:bg-casino-gold/25'
     ];
     return colors[colIndex];
   };
 
   return (
-    <Card className={`p-6 shadow-card bg-gradient-to-br from-card via-card to-card/90 transition-all duration-500 ${
+    <Card className={`p-6 shadow-felt bg-gradient-felt border-4 border-casino-wood transition-all duration-500 ${
       isGenerating ? 'animate-bounce-in' : ''
     }`}>
-      <div className="mb-4">
-        <h3 className="text-lg font-bold text-foreground">Ticket #{ticketNumber}</h3>
+      <div className="mb-6 text-center">
+        <h3 className="text-xl font-bold text-casino-gold font-serif border-b-2 border-casino-gold/30 pb-2">
+          Ticket #{ticketNumber}
+        </h3>
       </div>
       
-      <div className="grid grid-cols-9 gap-1 select-none">
+      <div className="grid grid-cols-9 gap-2 select-none p-2 bg-casino-felt/50 rounded-lg border border-casino-wood/30">
         {ticket.map((row, rowIndex) =>
           row.map((number, colIndex) => (
             <div
               key={`${rowIndex}-${colIndex}`}
               className={`
-                aspect-square flex items-center justify-center rounded-lg border-2 
-                transition-all duration-300 cursor-pointer relative overflow-hidden
-                ${number ? getCellColor(colIndex) : 'bg-muted/30 border-muted'}
-                ${number && markedNumbers.has(number) ? 'bg-success/20 border-success shadow-md scale-95' : ''}
-                ${number ? 'hover:scale-105 hover:shadow-md' : ''}
+                aspect-square flex items-center justify-center rounded-md border-2 
+                transition-all duration-300 cursor-pointer relative overflow-hidden font-serif
+                ${number ? getCellColor(colIndex) : 'bg-casino-felt/30 border-casino-wood/20'}
+                ${number && markedNumbers.has(number) 
+                  ? 'bg-casino-gold/40 border-casino-gold shadow-gold scale-95 animate-pulse' 
+                  : ''
+                }
+                ${number ? 'hover:scale-110 hover:shadow-gold' : ''}
               `}
               onClick={() => number && onNumberClick?.(number)}
             >
               {number && (
                 <span 
-                  className={`font-bold text-sm transition-all duration-200 ${
-                    markedNumbers.has(number) ? 'text-success-foreground' : 'text-foreground'
+                  className={`font-bold text-lg transition-all duration-200 ${
+                    markedNumbers.has(number) 
+                      ? 'text-casino-rim' 
+                      : 'text-casino-gold drop-shadow-md'
                   }`}
                 >
                   {number}
                 </span>
               )}
               {number && markedNumbers.has(number) && (
-                <div className="absolute inset-0 bg-success/10 animate-pulse-glow rounded-lg" />
+                <div className="absolute inset-0 border-2 border-casino-gold rounded-md animate-gold-shimmer" 
+                     style={{
+                       background: 'linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent)',
+                       backgroundSize: '200% 100%'
+                     }} 
+                />
               )}
             </div>
           ))

@@ -63,15 +63,15 @@ export const PlayerTicket = ({
 
   const getCellColor = (colIndex: number) => {
     const colors = [
-      'bg-tambola-orange/20 border-tambola-orange/50',
-      'bg-tambola-purple/20 border-tambola-purple/50', 
-      'bg-tambola-blue/20 border-tambola-blue/50',
-      'bg-tambola-green/20 border-tambola-green/50',
-      'bg-tambola-pink/20 border-tambola-pink/50',
-      'bg-primary/20 border-primary/50',
-      'bg-secondary/20 border-secondary/50',
-      'bg-accent/20 border-accent/50',
-      'bg-warning/20 border-warning/50'
+      'bg-casino-gold/15 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/17 border-casino-gold/50 hover:bg-casino-gold/25', 
+      'bg-casino-gold/19 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/21 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/23 border-casino-gold/50 hover:bg-casino-gold/25',
+      'bg-casino-gold/25 border-casino-gold/50 hover:bg-casino-gold/30',
+      'bg-casino-gold/27 border-casino-gold/50 hover:bg-casino-gold/30',
+      'bg-casino-gold/29 border-casino-gold/50 hover:bg-casino-gold/30',
+      'bg-casino-gold/31 border-casino-gold/50 hover:bg-casino-gold/30'
     ];
     return colors[colIndex];
   };
@@ -101,10 +101,10 @@ export const PlayerTicket = ({
       <Badge
         key={patternKey}
         variant={isCompleted ? "default" : "outline"}
-        className={`text-xs ${
+        className={`text-xs font-semibold ${
           isCompleted 
-            ? 'bg-success text-success-foreground animate-bounce-in' 
-            : 'text-muted-foreground'
+            ? 'bg-casino-gold text-casino-rim border-casino-gold animate-bounce-in shadow-gold' 
+            : 'text-casino-gold/60 border-casino-gold/30'
         }`}
       >
         <Icon className="w-3 h-3 mr-1" />
@@ -118,37 +118,37 @@ export const PlayerTicket = ({
   const completedPatterns = Object.entries(patterns).filter(([_, completed]) => completed);
 
   return (
-    <Card className={`p-4 transition-all duration-300 ${
+    <Card className={`p-4 transition-all duration-300 border-2 ${
       completedPatterns.length > 0 
-        ? 'ring-2 ring-success/50 shadow-glow bg-success/5' 
-        : 'shadow-card bg-card'
+        ? 'ring-4 ring-casino-gold/50 shadow-gold bg-casino-gold/10 border-casino-gold animate-pulse-glow' 
+        : 'shadow-felt bg-casino-felt border-casino-wood'
     }`}>
       {/* Player Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-            <span className="text-sm font-bold text-primary">{name[0]}</span>
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 rounded-full bg-casino-gold/30 border-2 border-casino-gold flex items-center justify-center shadow-gold">
+            <span className="text-sm font-bold text-casino-gold font-serif">{name[0]}</span>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground">{name}</h4>
-            <p className="text-xs text-muted-foreground">
+            <h4 className="font-semibold text-casino-gold font-serif">{name}</h4>
+            <p className="text-xs text-casino-gold/70 font-semibold">
               {markedCount}/{allTicketNumbers.length} marked
             </p>
           </div>
         </div>
         
         {completedPatterns.length > 0 && (
-          <div className="flex items-center space-x-1">
-            <Trophy className="w-4 h-4 text-success" />
-            <span className="text-xs text-success font-bold">
-              {completedPatterns.length} win{completedPatterns.length !== 1 ? 's' : ''}
+          <div className="flex items-center space-x-2 bg-casino-gold/20 px-3 py-1 rounded-full border border-casino-gold">
+            <Trophy className="w-4 h-4 text-casino-gold" />
+            <span className="text-xs text-casino-gold font-bold">
+              {completedPatterns.length} WIN{completedPatterns.length !== 1 ? 'S' : ''}
             </span>
           </div>
         )}
       </div>
 
       {/* Ticket Grid */}
-      <div className="grid grid-cols-9 gap-1 mb-4">
+      <div className="grid grid-cols-9 gap-1 mb-4 p-2 bg-casino-felt/30 rounded border border-casino-wood/30">
         {ticket.map((row, rowIndex) =>
           row.map((number, colIndex) => {
             const isMarked = number && markedNumbers.has(number);
@@ -160,24 +160,29 @@ export const PlayerTicket = ({
                 disabled={!number || !wasCalled || isMarked || gameState !== 'playing'}
                 onClick={() => number && wasCalled && !isMarked && onNumberClick?.(id, number)}
                 className={`
-                  aspect-square flex items-center justify-center rounded border text-xs font-bold
+                  aspect-square flex items-center justify-center rounded border text-xs font-bold font-serif
                   transition-all duration-300 relative overflow-hidden disabled:cursor-not-allowed
                   ${number 
-                    ? `${getCellColor(colIndex)} ${wasCalled && !isMarked ? 'hover:scale-105 cursor-pointer' : ''}`
+                    ? `${getCellColor(colIndex)} ${wasCalled && !isMarked ? 'hover:scale-110 cursor-pointer' : ''}`
                     : 'bg-transparent border-transparent'
                   }
-                  ${isMarked ? 'bg-success/30 border-success text-success-foreground scale-95' : ''}
+                  ${isMarked ? 'bg-casino-gold/40 border-casino-gold text-casino-rim scale-95' : 'text-casino-gold'}
                 `}
               >
                 {number && (
                   <>
                     <span className={`transition-colors duration-200 ${
-                      isMarked ? 'text-success-foreground' : 'text-foreground'
+                      isMarked ? 'text-casino-rim' : 'text-casino-gold'
                     }`}>
                       {number}
                     </span>
                     {isMarked && (
-                      <div className="absolute inset-0 bg-success/20 animate-pulse-glow rounded" />
+                      <div className="absolute inset-0 border-2 border-casino-gold rounded animate-gold-shimmer" 
+                           style={{
+                             background: 'linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent)',
+                             backgroundSize: '200% 100%'
+                           }} 
+                      />
                     )}
                   </>
                 )}
@@ -195,23 +200,22 @@ export const PlayerTicket = ({
           )}
         </div>
         
-        {/* Claim Buttons */}
+        {/* Casino-style Claim Buttons */}
         {gameState === 'playing' && getClaimablePatterns().length > 0 && (
-          <div className="mt-3 p-2 bg-accent/10 rounded-lg border border-accent/20">
+          <div className="mt-3 p-3 bg-casino-gold/10 rounded-lg border-2 border-casino-gold shadow-gold">
             <div className="flex items-center gap-2 mb-2">
-              <Hand className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-accent">Ready to claim:</span>
+              <Hand className="w-4 h-4 text-casino-gold" />
+              <span className="text-sm font-bold text-casino-gold font-serif">READY TO CLAIM:</span>
             </div>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-2">
               {getClaimablePatterns().map(pattern => (
                 <Button
                   key={pattern}
                   size="sm"
-                  variant="outline"
-                  className="h-7 px-2 text-xs bg-accent/20 hover:bg-accent/30 border-accent/50 text-accent"
+                  className="h-8 px-3 text-xs bg-casino-gold hover:bg-casino-gold-dark text-casino-rim border-2 border-casino-gold shadow-gold font-bold"
                   onClick={() => onPatternClaim?.(id, pattern)}
                 >
-                  Claim {pattern.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                  CLAIM {pattern.replace(/([A-Z])/g, ' $1').toUpperCase()}
                 </Button>
               ))}
             </div>
@@ -219,10 +223,10 @@ export const PlayerTicket = ({
         )}
 
         {completedPatterns.length > 0 && (
-          <div className="text-xs text-success font-medium">
-            🎉 {completedPatterns.map(([pattern]) => 
-              pattern.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())
-            ).join(', ')} completed!
+          <div className="text-sm text-casino-gold font-bold bg-casino-gold/20 p-2 rounded border border-casino-gold">
+            🏆 {completedPatterns.map(([pattern]) => 
+              pattern.replace(/([A-Z])/g, ' $1').toUpperCase()
+            ).join(', ')} COMPLETED!
           </div>
         )}
 
