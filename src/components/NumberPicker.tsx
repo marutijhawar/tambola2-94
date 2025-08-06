@@ -97,21 +97,21 @@ export const NumberPicker = ({
   return (
     <div className="space-y-6">
       {/* Current Number Display */}
-      <Card className="p-8 text-center bg-gradient-primary shadow-float">
+      <Card className="p-8 text-center bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float border-4 border-black">
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-white mb-4">Number Called</h2>
+          <h2 className="text-2xl font-bold text-black mb-4">Number Called</h2>
           
           <div className={`
             w-32 h-32 mx-auto rounded-full flex items-center justify-center 
-            bg-white/20 backdrop-blur-sm border-4 border-white/30
+            bg-black/20 backdrop-blur-sm border-4 border-black
             transition-all duration-300 ${isAnimating ? 'animate-pulse-glow scale-110' : ''}
           `}>
             {currentNumber ? (
-              <span className="text-4xl font-bold text-white animate-number-pop">
+              <span className="text-4xl font-bold text-black animate-number-pop">
                 {currentNumber}
               </span>
             ) : (
-              <span className="text-xl text-white/70">?</span>
+              <span className="text-xl text-black/70">?</span>
             )}
           </div>
 
@@ -119,14 +119,14 @@ export const NumberPicker = ({
             onClick={pickRandomNumber}
             disabled={isAnimating || availableNumbers.length === 0}
             size="lg"
-            className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-105"
+            className="bg-black/20 hover:bg-black/30 text-black border-black border-2 backdrop-blur-sm transition-all duration-300 hover:scale-105"
             variant="outline"
           >
             <Volume2 className="w-5 h-5 mr-2" />
             {isAnimating ? 'Picking...' : 'Pick Number'}
           </Button>
 
-          <p className="text-white/80 text-sm">
+          <p className="text-black/80 text-sm font-semibold">
             {availableNumbers.length} numbers remaining
           </p>
         </div>
