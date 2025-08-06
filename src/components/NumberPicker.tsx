@@ -97,7 +97,7 @@ export const NumberPicker = ({
   return (
     <div className="space-y-6">
       {/* Current Number Display */}
-      <Card className="p-8 text-center bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float border-4 border-black">
+      <Card className="p-8 text-center bg-gradient-to-br from-yellow-400 to-yellow-400 shadow-float border-4 border-black">
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-black mb-4">Number Called</h2>
           

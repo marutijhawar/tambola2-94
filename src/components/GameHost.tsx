@@ -415,7 +415,7 @@ export const GameHost = () => {
   return <div className="space-y-6">
       <GameCommands onBeginRound={startGame} gameState={gameState} />
       {/* Ready State */}
-      {gameState === 'waiting' && !gameReady && <Card className="p-8 bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float text-center border-4 border-black bg-amber-200">
+      {gameState === 'waiting' && !gameReady && <Card className="p-8 bg-gradient-to-br from-yellow-400 to-yellow-400 shadow-float text-center border-4 border-black bg-amber-200">
           <div className="max-w-md mx-auto">
             <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
               <Users className="w-8 h-8 text-black" />
@@ -442,7 +442,7 @@ export const GameHost = () => {
         </Card>}
 
       {/* Player Setup */}
-      {gameState === 'setup' && <Card className="p-8 bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float text-center border-4 border-black">
+      {gameState === 'setup' && <Card className="p-8 bg-gradient-to-br from-yellow-400 to-yellow-400 shadow-float text-center border-4 border-black">
           <div className="max-w-md mx-auto">
             <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
               <Users className="w-8 h-8 text-black" />
@@ -517,7 +517,7 @@ export const GameHost = () => {
         </Card>}
 
       {/* Current Number Display */}
-      {gameState !== 'waiting' && gameState !== 'setup' && gameReady && <Card className="p-8 text-center bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float border-4 border-black">
+      {gameState !== 'waiting' && gameState !== 'setup' && gameReady && <Card className="p-8 text-center bg-gradient-to-br from-yellow-400 to-yellow-400 shadow-float border-4 border-black">
           <h3 className="text-xl font-bold text-black mb-4">Current Number</h3>
           
           <div className={`
