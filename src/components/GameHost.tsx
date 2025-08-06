@@ -456,7 +456,7 @@ export const GameHost = () => {
       {gameState !== 'setup' && gameReady && <Card className="p-6 bg-gradient-accent shadow-card">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+            <div className="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm">
               <Users className="w-6 h-6 text-white" />
             </div>
             <div>
