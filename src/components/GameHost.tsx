@@ -415,7 +415,7 @@ export const GameHost = () => {
   return <div className="space-y-6">
       <GameCommands onBeginRound={startGame} gameState={gameState} />
       {/* Ready State */}
-      {gameState === 'waiting' && !gameReady && <Card className="p-8 bg-gradient-to-br from-yellow-400 to-yellow-400 shadow-float text-center border-4 border-black bg-amber-400">
+      {gameState === 'waiting' && !gameReady && <Card className="p-6 bg-gradient-accent shadow-card text-center border-4 border-black">
           <div className="max-w-md mx-auto">
             <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
               <Users className="w-8 h-8 text-black" />
