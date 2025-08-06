@@ -37,7 +37,6 @@ export const GameHost = () => {
   const [gameReady, setGameReady] = useState(false);
   const { toast } = useToast();
 
-  // Generate random Tambola tickets for players
   const generateTambolaTicket = (): (number | null)[][] => {
     const ticket: (number | null)[][] = [];
     
@@ -427,18 +426,18 @@ export const GameHost = () => {
       <GameCommands onBeginRound={startGame} gameState={gameState} />
       {/* Ready State */}
       {gameState === 'waiting' && !gameReady && (
-        <Card className="p-8 bg-gradient-primary shadow-float text-center">
+        <Card className="p-8 bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float text-center border-4 border-black">
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6">
-              <Users className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
+              <Users className="w-8 h-8 text-black" />
             </div>
-            <h2 className="text-3xl font-bold text-white mb-4">Smart Tambola Ready</h2>
-            <p className="text-white/80 mb-8">Generate tickets and get ready to play!</p>
+            <h2 className="text-3xl font-bold text-black mb-4 text-stroke">Smart Tambola Ready</h2>
+            <p className="text-black/80 mb-8 font-semibold">Generate tickets and get ready to play!</p>
             
             <div className="space-y-4">
               <Button
                 onClick={setupGame}
-                className="bg-success hover:bg-success/90 text-success-foreground px-8 py-3 text-lg mr-4"
+                className="bg-black hover:bg-black/90 text-white border-2 border-black px-8 py-3 text-lg mr-4 shadow-lg"
               >
                 Generate {numberOfPlayers} Tickets
               </Button>
@@ -447,15 +446,15 @@ export const GameHost = () => {
                 <Button
                   onClick={() => setNumberOfPlayers(Math.max(2, numberOfPlayers - 1))}
                   variant="outline"
-                  className="bg-white/20 hover:bg-white/30 text-white border-white/30 w-10 h-10 rounded-full"
+                  className="bg-black/20 hover:bg-black/30 text-black border-black w-10 h-10 rounded-full border-2"
                 >
                   -
                 </Button>
-                <span className="text-white font-bold">{numberOfPlayers} players</span>
+                <span className="text-black font-bold text-lg border-2 border-black bg-white px-3 py-1 rounded">{numberOfPlayers} players</span>
                 <Button
                   onClick={() => setNumberOfPlayers(Math.min(10, numberOfPlayers + 1))}
                   variant="outline"
-                  className="bg-white/20 hover:bg-white/30 text-white border-white/30 w-10 h-10 rounded-full"
+                  className="bg-black/20 hover:bg-black/30 text-black border-black w-10 h-10 rounded-full border-2"
                 >
                   +
                 </Button>
@@ -467,40 +466,40 @@ export const GameHost = () => {
 
       {/* Player Setup */}
       {gameState === 'setup' && (
-        <Card className="p-8 bg-gradient-primary shadow-float text-center">
+        <Card className="p-8 bg-gradient-to-br from-yellow-600 to-yellow-800 shadow-float text-center border-4 border-black">
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6">
-              <Users className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm mx-auto mb-6 border-2 border-black">
+              <Users className="w-8 h-8 text-black" />
             </div>
-            <h2 className="text-3xl font-bold text-white mb-4">Smart Tambola</h2>
-            <p className="text-white/80 mb-8">How many players will join the game?</p>
+            <h2 className="text-3xl font-bold text-black mb-4">Smart Tambola</h2>
+            <p className="text-black/80 mb-8 font-semibold">How many players will join the game?</p>
             
             <div className="space-y-6">
               <div className="flex items-center justify-center space-x-4">
                 <Button
                   onClick={() => setNumberOfPlayers(Math.max(2, numberOfPlayers - 1))}
                   variant="outline"
-                  className="bg-white/20 hover:bg-white/30 text-white border-white/30 w-12 h-12 rounded-full"
+                  className="bg-black/20 hover:bg-black/30 text-black border-black w-12 h-12 rounded-full border-2"
                 >
                   -
                 </Button>
-                <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <span className="text-3xl font-bold text-white">{numberOfPlayers}</span>
+                <div className="w-24 h-24 bg-black/20 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-black">
+                  <span className="text-3xl font-bold text-black">{numberOfPlayers}</span>
                 </div>
                 <Button
                   onClick={() => setNumberOfPlayers(Math.min(10, numberOfPlayers + 1))}
                   variant="outline"
-                  className="bg-white/20 hover:bg-white/30 text-white border-white/30 w-12 h-12 rounded-full"
+                  className="bg-black/20 hover:bg-black/30 text-black border-black w-12 h-12 rounded-full border-2"
                 >
                   +
                 </Button>
               </div>
               
-              <p className="text-white/60 text-sm">Choose between 2-10 players</p>
+              <p className="text-black/60 text-sm font-semibold">Choose between 2-10 players</p>
               
               <Button
                 onClick={setupGame}
-                className="bg-success hover:bg-success/90 text-success-foreground px-8 py-3 text-lg"
+                className="bg-black hover:bg-black/90 text-white border-2 border-black px-8 py-3 text-lg shadow-lg"
               >
                 Generate Tickets & Start Game
               </Button>
