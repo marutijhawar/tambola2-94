@@ -6,33 +6,15 @@ import { Volume2, Play, Pause, RotateCcw, Users, Trophy, CheckCircle } from "luc
 import { useToast } from "@/hooks/use-toast";
 import { PlayerTicket } from "./PlayerTicket";
 import { GameCommands } from "./GameCommands";
-export interface Player {
-  id: number;
-  name: string;
-  ticket: (number | null)[][];
-  markedNumbers: Set<number>;
-  patterns: {
-    earlyFive: boolean;
-    topLine: boolean;
-    middleLine: boolean;
-    bottomLine: boolean;
-    fourCorners: boolean;
-    fullHouse: boolean;
-  };
-  disqualified?: boolean;
-  disqualifiedPatterns?: Set<string>;
-  highlightedNumber?: number | null;
-}
+import { Leaderboard } from "./Leaderboard";
+import { Player, GameState, Winner, PATTERN_POINTS, PATTERN_NAMES } from "@/types/game";
 export const GameHost = () => {
-  const [gameState, setGameState] = useState<'setup' | 'waiting' | 'playing' | 'paused' | 'ended'>('waiting');
+  const [gameState, setGameState] = useState<GameState>('waiting');
   const [numberOfPlayers, setNumberOfPlayers] = useState<number>(5);
   const [currentNumber, setCurrentNumber] = useState<number | null>(null);
   const [calledNumbers, setCalledNumbers] = useState<number[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
-  const [winners, setWinners] = useState<{
-    pattern: string;
-    player: Player;
-  }[]>([]);
+  const [winners, setWinners] = useState<Winner[]>([]);
   const [claimedPatterns, setClaimedPatterns] = useState<Set<string>>(new Set());
   const [isAnimating, setIsAnimating] = useState(false);
   const [gameReady, setGameReady] = useState(false);
@@ -131,6 +113,7 @@ export const GameHost = () => {
           fourCorners: false,
           fullHouse: false
         },
+        points: 0,
         disqualified: false,
         disqualifiedPatterns: new Set()
       });
@@ -269,38 +252,34 @@ export const GameHost = () => {
     // Verify the pattern is actually complete
     const isValidClaim = verifyPatternClaim(player, pattern);
     if (isValidClaim) {
-      // Award the pattern
+      const points = PATTERN_POINTS[pattern as keyof typeof PATTERN_POINTS];
+      
+      // Award the pattern and points
       setPlayers(prevPlayers => prevPlayers.map(p => p.id === playerId ? {
         ...p,
         patterns: {
           ...p.patterns,
           [pattern]: true
-        }
+        },
+        points: p.points + points
       } : p));
+      
       setClaimedPatterns(prev => new Set([...prev, pattern]));
       setWinners(prev => [...prev, {
         pattern,
-        player
+        player,
+        points
       }]);
-      const patternNames: {
-        [key: string]: string;
-      } = {
-        earlyFive: 'Early Five',
-        topLine: 'Top Line',
-        middleLine: 'Middle Line',
-        bottomLine: 'Bottom Line',
-        fourCorners: 'Four Corners',
-        fullHouse: 'Full House'
-      };
+      
       toast({
         title: "WINNER! 🏆",
-        description: `${player.name} wins ${patternNames[pattern]}!`,
+        description: `${player.name} wins ${PATTERN_NAMES[pattern]} for ${points} points!`,
         duration: 5000
       });
 
       // Speak the win
       if (window.speechSynthesis) {
-        const winText = `${player.name} wins ${patternNames[pattern]}!`;
+        const winText = `${player.name} wins ${PATTERN_NAMES[pattern]} for ${points} points!`;
         const utterance = new SpeechSynthesisUtterance(winText);
         utterance.rate = 0.8;
         utterance.pitch = 1.3;
@@ -411,6 +390,7 @@ export const GameHost = () => {
     setWinners([]);
     setClaimedPatterns(new Set());
     setPlayers([]);
+    setGameReady(false);
   };
   return <div className="space-y-6">
       <GameCommands onBeginRound={startGame} gameState={gameState} />
@@ -539,21 +519,27 @@ export const GameHost = () => {
           </p>
         </Card>}
 
+      {/* Leaderboard */}
+      <Leaderboard players={players} gameState={gameState} />
+
       {/* Winners Display */}
       {winners.length > 0 && <Card className="p-6 bg-success/10 border-success shadow-card">
           <div className="flex items-center space-x-2 mb-4">
             <Trophy className="w-5 h-5 text-success" />
-            <h3 className="text-lg font-bold text-success">Winners So Far</h3>
+            <h3 className="text-lg font-bold text-success">Recent Winners</h3>
           </div>
           
           <div className="space-y-2">
-            {winners.map((winner, index) => <div key={index} className="flex items-center justify-between p-3 bg-success/5 rounded-lg">
+            {winners.slice(-5).map((winner, index) => <div key={index} className="flex items-center justify-between p-3 bg-success/5 rounded-lg">
                 <span className="font-medium">
-                  {winner.pattern.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                  {PATTERN_NAMES[winner.pattern]}
                 </span>
                 <div className="flex items-center space-x-2">
                   <Badge variant="secondary" className="bg-success/20 text-success">
                     {winner.player.name}
+                  </Badge>
+                  <Badge className="bg-primary text-primary-foreground font-bold">
+                    +{winner.points} pts
                   </Badge>
                   <CheckCircle className="w-4 h-4 text-success" />
                 </div>

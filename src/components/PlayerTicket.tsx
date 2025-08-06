@@ -2,14 +2,14 @@ import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { CheckCircle, Star, Trophy, Hand, AlertTriangle } from "lucide-react";
-import type { Player } from "./GameHost";
+import type { Player, GameState } from "@/types/game";
 
 interface PlayerTicketProps {
   player: Player;
   calledNumbers: number[];
   onNumberClick?: (playerId: number, number: number) => void;
   onPatternClaim?: (playerId: number, pattern: string) => void;
-  gameState: 'setup' | 'waiting' | 'playing' | 'paused' | 'ended';
+  gameState: GameState;
   currentNumber?: number | null;
   claimedPatterns?: Set<string>;
 }
@@ -196,7 +196,7 @@ export const PlayerTicket = ({
       <div className="space-y-2">
         <div className="flex flex-wrap gap-1">
           {Object.entries(patterns).map(([patternKey, isCompleted]) =>
-            getPatternBadge(patternKey, isCompleted)
+            getPatternBadge(patternKey, isCompleted as boolean)
           )}
         </div>
         
