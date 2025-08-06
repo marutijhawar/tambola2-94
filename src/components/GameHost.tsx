@@ -460,7 +460,7 @@ export const GameHost = () => {
               <Users className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-white">Tambola Game Host</h2>
+              <h2 className="text-2xl font-bold text-black">Tambola Game Host</h2>
               <p className="text-white/80">Managing {players.length} players • Standard 1-90 rules</p>
             </div>
           </div>
