@@ -466,7 +466,7 @@ export const GameHost = () => {
           </div>
 
           <div className="flex gap-2">
-            {gameState === 'waiting' && <Button onClick={startGame} className="bg-success hover:bg-success/90 text-success-foreground">
+            {gameState === 'waiting' && <Button onClick={startGame} className="p-6 bg-gradient-accent shadow-card text-black">
                 <Play className="w-4 h-4 mr-2" />
                 Begin the Round
               </Button>}
