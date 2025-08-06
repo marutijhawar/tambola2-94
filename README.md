@@ -11,9 +11,7 @@
 A premium, multiplayer Tambola game with a luxurious casino aesthetic—dark green felt, wooden borders, and gold accents—powered by an AI game-host called **Lovable**.
 
 ## 🌟 Features
-
-- Private game rooms with host/admin control  
-- Players join via unique room codes and nicknames  
+ 
 - Live ticket assignment and number calling  
 - Interactive click-to-mark interface  
 - Pattern claims: Early Five, Top/Middle/Bottom Line, Four Corners, Full House  
