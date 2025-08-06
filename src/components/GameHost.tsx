@@ -461,7 +461,7 @@ export const GameHost = () => {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-black">Tambola Game Host</h2>
-              <p className="text-white/80">Managing {players.length} players • Standard 1-90 rules</p>
+              <p className="text-black">Managing {players.length} players • Standard 1-90 rules</p>
             </div>
           </div>
 
