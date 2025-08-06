@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/f14e31e5-2487-46b8-9d87-49c2c79d1202
+**URL**: https://preview--tambola2-94.lovable.app/
 
 ## How can I edit this code?
 
