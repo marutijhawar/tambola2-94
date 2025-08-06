@@ -20,4 +20,11 @@ A premium, multiplayer Tambola game with a luxurious casino aesthetic—dark gre
 - Real-time scoring and leaderboard  
 - Casino-inspired UI: green felt background, wooden rails, gold highlights  
 
-
+## What technologies are used for this project?
+This
+project is built with:
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
