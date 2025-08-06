@@ -473,7 +473,7 @@ export const GameHost = () => {
         </Card>}
 
       {/* Game Controls */}
-      {gameState !== 'setup' && gameReady && <Card className="p-6 bg-gradient-primary shadow-float">
+      {gameState !== 'setup' && gameReady && <Card className="p-6 bg-gradient-accent shadow-card">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
