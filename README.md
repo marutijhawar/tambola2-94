@@ -1,4 +1,4 @@
-# Royal tambola casino 
+# 🎰 Casino‑Themed Tambola (Housie) Game
 # Vibe coding challenge 
 - by Maruti Nandan Jhawar and Sainishant Biradar
 
@@ -6,35 +6,18 @@
 
 **URL**: https://preview--tambola2-94.lovable.app/
 
+# 🎰 Casino‑Themed Tambola (Housie) Game
 
-**Use your preferred IDE**
+A premium, multiplayer Tambola game with a luxurious casino aesthetic—dark green felt, wooden borders, and gold accents—powered by an AI game-host called **Lovable**.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🌟 Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-**Unique feature**
-- we have added points system to the game 
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Private game rooms with host/admin control  
+- Players join via unique room codes and nicknames  
+- Live ticket assignment and number calling  
+- Interactive click-to-mark interface  
+- Pattern claims: Early Five, Top/Middle/Bottom Line, Four Corners, Full House  
+- Real-time scoring and leaderboard  
+- Casino-inspired UI: green felt background, wooden rails, gold highlights  
 
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
